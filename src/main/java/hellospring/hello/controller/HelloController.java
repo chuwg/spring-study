@@ -12,4 +12,12 @@ public class HelloController {
         model.addAttribute("data", "hello!! 되나요?");
         return "Hello";
     }
+
+    @GetMapping("hello-mvc")
+    public String helloMvc(@RequestParam("name") String name, Model model) {
+        // model에 담으면 View에서 렌더해서 사용
+        model.addAttribute("name", name);
+        return "hello-template";
+    }
+
 }
