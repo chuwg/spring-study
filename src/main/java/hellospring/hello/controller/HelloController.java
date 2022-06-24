@@ -21,11 +21,30 @@ public class HelloController {
         return "hello-template";
     }
 
-    @GetMapping("Hello-string")
+    @GetMapping("hello-string")
     @ResponseBody // http body부에 직접 이 내용을 넣어주겠다.
     public String helloString(@RequestParam("name") String name) {
-        return "hello " + name; // 파라미터에 string 이라고 넣으면 "hello string" 이라고 뜬다.
+        return "hello " + name;
+        // 파라미터에 string 이라고 넣으면 "hello string" 이라고 뜬다.
         // 이 때 소스보기를 해보면 html 형식이 아니라 정말 텍스트만 뿌려주는걸 볼 수 있다.
     }
 
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloApi(@RequestParam("name") String name) {
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+    static class Hello {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 }
