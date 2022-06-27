@@ -14,6 +14,13 @@ public class HelloController {
         return "Hello";
     }
 
+    /**
+     *
+     * @param name
+     * @param model
+     * @return
+     */
+
     @GetMapping("hello-mvc")
     public String helloMvc(@RequestParam("name") String name, Model model) {
         // model에 담으면 View에서 렌더해서 사용
